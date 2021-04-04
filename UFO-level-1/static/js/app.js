@@ -34,6 +34,10 @@ function UFO_Data() {
 
     console.log(filtered_data);
 
+    // Select the table body of our table in the html 
+    table_body.html("");
+
+
     // Create a forEach function that will loop through
     // and append our filtered data based on date inputted by user
     filtered_data.forEach(ufo_info => {
