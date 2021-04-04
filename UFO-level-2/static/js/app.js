@@ -31,11 +31,22 @@ function UFO_Data() {
     console.log(user_input);
     console.log(filter_id);
 
-    // Create a variable for our table data that will filter based on date
-    var filtered_data = tableData.filter(date => date.datetime === user_input);
+    if (user_filters) {
+      search_filters[filter_id] = user_filters;
+      }
+      else {
+        delete search_filters[filter_id];
+      }
+
+      // Create variable for our table data to filter based on user input
+      var filtered_data = tableData;
+
+      Object.entries(search_filters).forEach(([key, value]) => {
+        filtered_data = filtered_data.filter(row => row[key] === value);
+      });
 
     console.log(filtered_data);
-
+    
     // Select the table body of our table in the html 
     table_body.html("");
 
