@@ -31,6 +31,8 @@ function UFO_Data() {
     console.log(user_input);
     console.log(filter_id);
 
+    // Create an if else statement that will append a key value pair, based on html 
+    // input id and user input respecfully, into our search_filters dictionary
     if (user_filters) {
       search_filters[filter_id] = user_filters;
       }
@@ -41,15 +43,16 @@ function UFO_Data() {
       // Create variable for our table data to filter based on user input
       var filtered_data = tableData;
 
+      // Create a forEach function that will loop through and pass in 
+      // key from our search_filters dictionary based on user input
       Object.entries(search_filters).forEach(([key, value]) => {
         filtered_data = filtered_data.filter(row => row[key] === value);
       });
 
     console.log(filtered_data);
-    
+
     // Select the table body of our table in the html 
     table_body.html("");
-
 
     // Create a forEach function that will loop through
     // and append our filtered data based on date inputted by user
@@ -60,7 +63,6 @@ function UFO_Data() {
             let cell = row.append("td").text(info);
         })
     })
-
 };
 
 // Adding global variable using our forEach function so the page 
