@@ -45,3 +45,13 @@ function UFO_Data() {
     })
 
 };
+
+// Adding global variable using our forEach function so out page 
+// will preload with a table containing all of our filtered data set
+tableData.forEach(ufo_info => {
+    let row = table_body.append("tr");
+
+    Object.values(ufo_info).forEach(info =>{
+        let cell = row.append("td").text(info);
+    })
+})
