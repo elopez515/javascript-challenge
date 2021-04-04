@@ -47,7 +47,7 @@ function UFO_Data() {
 };
 
 // Adding global variable using our forEach function so out page 
-// will preload with a table containing all of our filtered data set
+// will preload with a table containing all of our data
 tableData.forEach(ufo_info => {
     let row = table_body.append("tr");
 
