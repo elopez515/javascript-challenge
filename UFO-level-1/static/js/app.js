@@ -1,4 +1,4 @@
-// from data.js
+// Import the data from our data.js file
 var tableData = data;
 
 // Select the button tag from out index.html
@@ -20,14 +20,11 @@ function UFO_Data() {
     // Prevent the page from refreshing
     d3.event.preventDefault();
 
-    // Select the input element and get the raw HTML node
+    //Create a variable that saves the element that was changed
     var user_date = d3.select("#datetime");
 
-    // Get the value property of the input element
+    // Create a variable for the value that was input
     var user_input = user_date.property("value");
-
-    console.log(user_input);
-    console.log(tableData);
 
     // Create a variable for our table data that will filter based on date
     var filtered_data = tableData.filter(date => date.datetime === user_input);
@@ -37,9 +34,8 @@ function UFO_Data() {
     // Select the table body of our table in the html 
     table_body.html("");
 
-
     // Create a forEach function that will loop through
-    // and append our filtered data based on date inputted by user
+    // and append our filtered data based on date input by user
     filtered_data.forEach(ufo_info => {
         let row = table_body.append("tr");
 
@@ -50,7 +46,7 @@ function UFO_Data() {
 
 };
 
-// Adding global variable using our forEach function so out page 
+// Adding global variable using our forEach function so the page 
 // will preload with a table containing all of our data
 tableData.forEach(ufo_info => {
     let row = table_body.append("tr");
