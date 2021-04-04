@@ -28,9 +28,6 @@ function UFO_Data() {
     // Create a variable for the id that was changed
     var filter_id = user_input.attr("id");
 
-    console.log(user_input);
-    console.log(filter_id);
-
     // Create an if else statement that will append a key value pair, based on html 
     // input id and user input respecfully, into our search_filters dictionary
     if (user_filters) {
@@ -55,7 +52,7 @@ function UFO_Data() {
     table_body.html("");
 
     // Create a forEach function that will loop through
-    // and append our filtered data based on date inputted by user
+    // and append our filtered data based on date input by user
     filtered_data.forEach(ufo_info => {
         let row = table_body.append("tr");
 
@@ -66,7 +63,7 @@ function UFO_Data() {
 };
 
 // Adding global variable using our forEach function so the page 
-// will preload with a table containing all of our data
+// will load with a table containing all data
 tableData.forEach(ufo_info => {
     let row = table_body.append("tr");
 
