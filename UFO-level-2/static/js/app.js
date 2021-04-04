@@ -1,18 +1,17 @@
-// from data.js
+// Import the data from our data.js file
 var tableData = data;
 
-// Select the button tag from out index.html
-var button = d3.select("#filter-btn");
-
-// Select the form tag from out index.html
-var form = d3.select("form");
+// Select the filter class from our form in index.html
+var filter = d3.selectAll(".filter");
 
 // Create event handlers 
-button.on("click", UFO_Data);
-form.on("submit",UFO_Data);
+filter.on("change", UFO_Data);
 
 // Select the table body of our table in the html 
 var table_body = d3.select("tbody");
+
+// Create an empty dictionary that will hold the search filters 
+var search_filters = {};
 
 // Complete the event handler function for the form
 function UFO_Data() {
@@ -20,14 +19,17 @@ function UFO_Data() {
     // Prevent the page from refreshing
     d3.event.preventDefault();
 
-    // Select the input element and get the raw HTML node
-    var user_date = d3.select("#datetime");
+    // Create a variable that saves the element that was changed 
+    var user_input = d3.select(this).select("input");
 
-    // Get the value property of the input element
-    var user_input = user_date.property("value");
+    // Create a variable for the value that was input
+    var user_filters = user_input.property("value");
+    
+    // Create a variable for the id that was changed
+    var filter_id = user_input.attr("id");
 
     console.log(user_input);
-    console.log(tableData);
+    console.log(filter_id);
 
     // Create a variable for our table data that will filter based on date
     var filtered_data = tableData.filter(date => date.datetime === user_input);
